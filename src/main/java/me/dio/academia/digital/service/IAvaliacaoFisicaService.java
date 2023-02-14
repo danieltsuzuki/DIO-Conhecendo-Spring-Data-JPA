@@ -3,11 +3,10 @@ package me.dio.academia.digital.service;
 import me.dio.academia.digital.entity.AvaliacaoFisica;
 import me.dio.academia.digital.entity.form.AvaliacaoFisicaForm;
 import me.dio.academia.digital.entity.form.AvaliacaoFisicaUpdateForm;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface IAvaliacaoFisicaService{
+public interface IAvaliacaoFisicaService {
   /**
    * Cria uma Avaliação Física e salva no banco de dados.
    * @param form - formulário referente aos dados para criação da Avaliação Física no banco de dados.

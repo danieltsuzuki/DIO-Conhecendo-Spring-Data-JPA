@@ -11,43 +11,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
-public class AvaliacaoFisicaServiceImpl implements IAvaliacaoFisicaService{
-    @Autowired
-    private AvaliacaoFisicaRepository repository;
+public class AvaliacaoFisicaServiceImpl implements IAvaliacaoFisicaService {
 
-    @Autowired
-    private AlunoRepository alunoRepository;
+  @Autowired
+  private AvaliacaoFisicaRepository avaliacaoFisicaRepository;
 
-    @Override
-    public AvaliacaoFisica create(AvaliacaoFisicaForm form){
-        AvaliacaoFisica avaliacaoFisica = new AvaliacaoFisica();
+  @Autowired
+  private AlunoRepository alunoRepository;
 
-        Aluno aluno = alunoRepository.findById(form.getAlunoId()).get();
+  @Override
+  public AvaliacaoFisica create(AvaliacaoFisicaForm form) {
+    AvaliacaoFisica avaliacaoFisica = new AvaliacaoFisica();
+    Aluno aluno = alunoRepository.findById(form.getAlunoId()).get();
 
-        avaliacaoFisica.setAluno(aluno);
-        avaliacaoFisica.setPeso(form.getPeso());
-        avaliacaoFisica.setAltura(form.getAltura());
-        return repository.save(avaliacaoFisica);
-    }
+    avaliacaoFisica.setAluno(aluno);
+    avaliacaoFisica.setPeso(form.getPeso());
+    avaliacaoFisica.setAltura(form.getAltura());
 
-    @Override
-    public AvaliacaoFisica get(Long id) {
-        AvaliacaoFisica avaliacaoFisica = repository.getById(id);
-        return avaliacaoFisica;
-    }
+    return avaliacaoFisicaRepository.save(avaliacaoFisica);
+  }
 
-    @Override
-    public List<AvaliacaoFisica> getAll() {
-        return repository.findAll();
-    }
+  @Override
+  public AvaliacaoFisica get(Long id) {
+    return null;
+  }
 
-    @Override
-    public AvaliacaoFisica update(Long id, AvaliacaoFisicaUpdateForm formUpdate) {
-        return null;
-    }
+  @Override
+  public List<AvaliacaoFisica> getAll() {
 
-    @Override
-    public void delete(Long id) {
-    }
+    return avaliacaoFisicaRepository.findAll();
+  }
+
+  @Override
+  public AvaliacaoFisica update(Long id, AvaliacaoFisicaUpdateForm formUpdate) {
+    return null;
+  }
+
+  @Override
+  public void delete(Long id) {
+
+  }
 }
